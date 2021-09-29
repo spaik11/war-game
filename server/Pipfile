@@ -12,6 +12,7 @@ psycopg2 = "*"
 uvicorn = "*"
 importlib-resources = "*"
 python-dotenv = "*"
+bcrypt = "*"
 
 [dev-packages]
 python-dotenv = "*"
