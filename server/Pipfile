@@ -13,6 +13,8 @@ uvicorn = "*"
 importlib-resources = "*"
 python-dotenv = "*"
 bcrypt = "*"
+pytest = "*"
+requests = "*"
 
 [dev-packages]
 python-dotenv = "*"

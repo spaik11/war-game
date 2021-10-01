@@ -1,6 +1,6 @@
 import uvicorn
-from fastapi import FastAPI
 import os
+from fastapi import FastAPI
 from fastapi_sqlalchemy import DBSessionMiddleware
 from fastapi_sqlalchemy import db
 from sqlalchemy.sql.expression import func
@@ -14,6 +14,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 load_dotenv(os.path.join(BASE_DIR, ".env"))
 
 app = FastAPI()
+
 
 app.add_middleware(DBSessionMiddleware, db_url=os.environ["DATABASE_URL"])
 
@@ -38,17 +39,20 @@ def get_users():
 
 @app.get("/war/")
 def start_war():
+    # grad two random players in the db
     player1, player2 = db.session.query(
         ModelUser.id, ModelUser.username, ModelUser.wins).order_by(func.random()).offset(0).limit(2).all()
 
+    # play war! unpack the winner, total rounds, and the loser from the match
     (winner, total_rounds, loser) = war(player1, player2)
+
+    # update the wins column in the db for the winner
     updateWinner = db.session.query(ModelUser).filter(
         ModelUser.id == winner.id).first()
-
     updateWinner.wins += 1
     db.session.commit()
     db.session.refresh(updateWinner)
-    # update winner wins in db
+
     return f"{winner.username} beat {loser.username} in {total_rounds} rounds!"
 
 
