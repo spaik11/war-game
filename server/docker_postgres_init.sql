@@ -3,10 +3,10 @@ CREATE TABLE IF NOT EXISTS users
     id int PRIMARY KEY,
     username CHAR(50) NOT NULL,
     password CHAR(50) NOT NULL,
-    record int NOT NULL
+    wins int NOT NULL
 );
 
-INSERT INTO users (id, username, password, record) VALUES
+INSERT INTO users (id, username, password, wins) VALUES
 (
     1,
     'sung',
