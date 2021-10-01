@@ -4,20 +4,11 @@ Welcome to the war card game. This project was built using FastAPI, PostgreSQL, 
 
 ## Getting Started
 
----
-
 Clone this repository and `cd server`
 
 ### How to build
 
 - `docker-compose build`
-
-<!-- ### Run Migrations
-
-```
-alembic revision --autogenerate -m "first commit"
-alembic upgrade head
-``` -->
 
 ### How to run db
 
@@ -34,8 +25,6 @@ alembic upgrade head
 
 ## Project Walkthrough
 
----
-
 FastAPI provides an interactive API docs page. Lets go to `localhost:8000/docs/`.
 
 ![docshome](server/public/images/docshome.png)
@@ -45,8 +34,6 @@ Lets invoke the `Create User` endpoint two times to create two players.
 ![createuser](server/public/images/createuser.png)
 
 ### Endpoints
-
----
 
 1. `POST /user/` will create a user in the db
 2. `GET /users/` will return all users in the db along with their total wins
@@ -59,18 +46,26 @@ Lets invoke the `Create User` endpoint two times to create two players.
 
 ### Testing
 
----
-
-- `cd server`
-- `pipenv install`
-- `pipenv shell`
+- `docker-compose up`
+- `docker exec -it server_web_1 bash`
 - `pytest`
 
 ## What I Would Add/Change
 
 1. Include UI
 
-   - Error handling itself was challenging learning and using a new framework/language.
+   - If I had to start over, I would put the game logic on the frontend and create a better user experience. Right now, it is not a satisfying user experience to play the game.
 
 2. Use a familiar framework
-   - I took a risk of learning utilizing Python and FastAPI for my language/framework. It took a lot of time reading documentation
+
+   - The setup was easy for FastAPI but the initial learning curve was steep to implement Docker and get it connected to a PostgreSQL db.
+   - Using a familiar framework would've given me more time to focus on user experience.
+
+3. Testing
+   - Due to the time constraint, I did not implement a setup and teardown situation for
+
+## What I Learned
+
+I took a risk of learning Python and FastAPI for my language/framework. It took a lot of time reading documentation and learning different nuances from JavaScript/Node.js. It was also my first time taking a deep dive into Docker as well.
+
+Getting a FastAPI server up and running was extremely easy.

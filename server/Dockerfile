@@ -8,10 +8,9 @@ ENV PYTHONUNBUFFERED 1
 WORKDIR /code/
 
 # Install dependencies
-RUN pip install pipenv
-COPY Pipfile Pipfile.lock /code/
-RUN pipenv install --system --dev
+COPY requirements.txt ./
+RUN pip install -r requirements.txt
 
-COPY . /code/
+COPY . .
 
 EXPOSE 8000
