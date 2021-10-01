@@ -67,16 +67,16 @@ def war(player1, player2):
 
     while game_on:
         round_num += 1
-        # print(f'Round {round_num}')
+        print(f'Round {round_num}')
 
         if len(player_one.all_cards) == 0:
             print(f'{player_one.username}, out of cards! {player_two.username} Wins!')
-            return player_two
+            return (player_two, round_num, player_one)
 
         if len(player_two.all_cards) == 0:
             print(
                 f'{player_two.username} , out of cards! {player_one.username} Wins!')
-            return player_one
+            return (player_one, round_num, player_two)
 
         # START A NEW ROUND
         player_one_cards = []
@@ -100,17 +100,17 @@ def war(player1, player2):
 
                 at_war = False
             else:
-                # print('WAR!')
+                print('WAR!')
 
                 if len(player_one.all_cards) < 5:
                     print(f'{player_one.username} unable to declare war')
                     print(f'{player_two.username.upper()} WINS!')
-                    return player_two
+                    return (player_two, round_num, player_one)
 
                 elif len(player_two.all_cards) < 5:
                     print(f'{player_two.username} unable to declare war')
                     print(f'{player_one.username.upper()} WINS!')
-                    return player_one
+                    return (player_one, round_num, player_two)
 
                 else:
                     for num in range(5):

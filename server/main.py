@@ -41,15 +41,15 @@ def start_war():
     player1, player2 = db.session.query(
         ModelUser.id, ModelUser.username, ModelUser.wins).order_by(func.random()).offset(0).limit(2).all()
 
-    winner = war(player1, player2)
+    (winner, total_rounds, loser) = war(player1, player2)
     updateWinner = db.session.query(ModelUser).filter(
         ModelUser.id == winner.id).first()
-    print('updating user: ', updateWinner)
+
     updateWinner.wins += 1
     db.session.commit()
     db.session.refresh(updateWinner)
     # update winner wins in db
-    return updateWinner
+    return f"{winner.username} beat {loser.username} in {total_rounds} rounds!"
 
 
 @app.get("/")
