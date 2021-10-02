@@ -4,7 +4,7 @@ Welcome to the war card game. This project was built using FastAPI, PostgreSQL, 
 
 ## Getting Started
 
-Clone this repository and `cd server`
+Clone this repository and run the following commands:
 
 ### How to build
 
@@ -29,9 +29,9 @@ FastAPI provides an interactive API docs page. Lets go to `localhost:8000/docs/`
 
 ![docshome](server/public/images/docshome.png)
 
-Lets invoke the `Create User` endpoint two times to create two players.
+Lets invoke the `Seed` endpoint to create users in the database.
 
-![createuser](server/public/images/createuser.png)
+![createuser](server/public/images/createusers.png)
 
 ### Endpoints
 
@@ -46,9 +46,14 @@ Lets invoke the `Create User` endpoint two times to create two players.
 
 ### Testing
 
+In the terminal, run the following commands:
+
 - `docker-compose up`
 - `docker exec -it server_web_1 bash`
 - `pytest`
+
+1. Check the welcome message when you first hit the `GET /` route.
+2. Check to see if the database count of all users will increment by 1 when you hit the `POST /user/` route.
 
 ## What I Would Add/Change
 
@@ -62,10 +67,11 @@ Lets invoke the `Create User` endpoint two times to create two players.
    - Using a familiar framework would've given me more time to focus on user experience.
 
 3. Testing
-   - Due to the time constraint, I did not implement a setup and teardown situation for
+   - Due to the time constraint, I did not implement a setup and teardown situation for my add user test.
+   - Also, I would have wanted to incorporate more tests.
 
 ## What I Learned
 
 I took a risk of learning Python and FastAPI for my language/framework. It took a lot of time reading documentation and learning different nuances from JavaScript/Node.js. It was also my first time taking a deep dive into Docker as well.
 
-Getting a FastAPI server up and running was extremely easy.
+I did trade off user experience but I am extremely happy to have learned all these new technologies and showcase my skill to learn something new and to be able to implement it.

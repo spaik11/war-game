@@ -19,7 +19,6 @@ app = FastAPI()
 app.add_middleware(DBSessionMiddleware, db_url=os.environ["DATABASE_URL"])
 
 
-# @app.delete('/users/')
 @app.post("/user/", response_model=SchemaUser)
 def create_user(user: SchemaUser):
 
@@ -59,29 +58,24 @@ def start_war():
 
 @app.get('/seed/')
 def seed():
-    sql = """
-    INSERT INTO users (id, username, password, wins) VALUES
+    sql = """ INSERT INTO users (username, password, wins) VALUES
     (
-        1,
         'sung',
         '123',
         0
     ),
     (
-        2,
-        'bob',
+        'robert',
         '123',
-        0,
+        0
     ),
     (
-        3,
         'nancy',
         '123',
         0
     ),
     (
-        4,
-        'robert',
+        'clara',
         '123',
         0
     );
