@@ -68,7 +68,7 @@ In the terminal, run the following commands:
 
 3. Testing
    - Due to the time constraint, I did not implement a setup and teardown situation for my add user test.
-   - Also, I would have wanted to incorporate more tests.
+   - Incorporating more tests.
 
 ## What I Learned
 
